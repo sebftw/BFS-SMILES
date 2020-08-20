@@ -14,3 +14,4 @@ These examples were produced with `full=False`, meaning the final bond, if it is
 | CCCS(=O)c1ccc2[nH]c(=NC(=O)OC)[nH]c2c1 | CCCSO2C0C2C0C0C02C12N0N0C11N2CO2O0C      |
 
 In case `full=True` the first example would read CC1C1C1C1C1; this means every C-atom is bonded with a single bond '1', to the previous atom.
+The character '0' is no-bond, it means to skip over the previous atom and go to the next one back.
