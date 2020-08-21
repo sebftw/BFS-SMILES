@@ -142,11 +142,15 @@ if __name__ == "__main__":
     import moses
     import pandas as pd
     from tqdm import tqdm
+
+    # Parameters
     moses_dataset = 'train'
     full = True
 
     smiles_input = moses.get_dataset(moses_dataset)
     string_output_file = 'BFS_SMILES' + str(int(full)) + '_' + moses_dataset + '.csv.gz'
+    string_output_file = os.path.join('dataset', string_output_file)
+
     if not os.path.exists(string_output_file):
         #  Simply store the BFS-SMILES in the same manner as the moses SMILES datasets are stored.
         train_strings = np.array([smiles_to_string(smiles, full=full) for smiles in tqdm(smiles_input)])
