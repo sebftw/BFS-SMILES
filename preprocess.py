@@ -4,6 +4,7 @@ import re
 
 import numpy as np
 from rdkit import Chem
+import rdkit.Chem.Descriptors
 from rdkit.Chem.rdchem import BondType
 
 bond_types = (0, BondType.SINGLE, BondType.DOUBLE, BondType.TRIPLE)  # 0 for NO_BOND.
@@ -133,7 +134,7 @@ def string_to_smiles(string):
     try:
         Chem.SanitizeMol(final_mol)
         smile = Chem.MolToSmiles(final_mol, isomericSmiles=False)
-    except:  # The conversion failed. There was probably an issue with the BFS-SMILES string.
+    except ValueError:  # The conversion failed. There was probably an issue with the BFS-SMILES string.
         pass
 
     return smile
@@ -155,3 +156,6 @@ if __name__ == "__main__":
         #  Simply store the BFS-SMILES in the same manner as the moses SMILES datasets are stored.
         train_strings = np.array([smiles_to_string(smiles, full=full) for smiles in tqdm(smiles_input)])
         pd.DataFrame(data=train_strings, columns=["SMILES"]).to_csv(string_output_file, compression='gzip', index=False)
+    else:
+        # (Makefiles may be a better way, so we automatically ensure integrity.)
+        print(string_output_file, 'already exists, so we will not do anything. (Delete it if it needs to be updated)')
