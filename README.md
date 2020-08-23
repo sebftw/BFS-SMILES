@@ -18,7 +18,7 @@ The character '0' is no-bond, it means to skip over the previous atom and go to 
 
 ## Results
 
-Results so far. The networks have not been fully trained yet. We let the BFS versions run for as many epochs as the vanilla versions. The networks were trained for 24 hours.
+Results so far, when trained on [moses](https://github.com/molecularsets/moses). The networks have not been fully trained yet. We let the BFS versions run for as many epochs as the vanilla versions. The networks were trained for 24 hours.
 
 <table border="1" class="dataframe">
   <thead>
